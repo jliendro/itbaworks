@@ -1,0 +1,14 @@
+Ejercicio 1
+Item a
+maxima verosimilitud = (n-1)S^2/n
+
+
+Hola a todos!!
+
+Les envío un archivo txt con los datos de los ejercicios (aunque están en las págs. que indican en el tp)
+Para los datos que están cargados en el Matlab, escribí "load nombre_datos" y para los demás, los copié para que les resulte fácil hacer cut&paste y cargarlos.
+
+El viernes terminamos con lo que falta de aprendizaje estadístico y luego veremos algunos comandos e ideas para resolver  la práctica. 
+
+Hasta el viernes!!
+Julia

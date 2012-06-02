@@ -1,4 +1,4 @@
-dialects=load('dialects.mat');
+dialects=load('data\dialects.mat');
 dialects=dialects.A_pastespecial;
 
 
@@ -11,10 +11,9 @@ labels={'A - Nottinghamshire','B - Nottinghamshire','C - Nottinghamshire',...
     'V - Huntingdonshire','W - Cambridgeshire','X - Buckinghamshire',...
     'Y - Bedfordshire'};
 
-methods={'single','complete','average','complete',...
-    'ward','weighted'};
+methods={'single','complete','average','complete','weighted'};
 distances={'euclidean','seuclidean','cityblock','minkowski','chebychev',...
-    'mahalanobis','cosine','correlation','spearman','hamming','jaccard'};
+    'cosine','correlation','spearman','hamming','jaccard'};
 
 for i=1:size(distances,2)
     distance=distances{i};
