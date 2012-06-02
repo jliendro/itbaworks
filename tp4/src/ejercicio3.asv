@@ -1,9 +1,7 @@
 dialects=load('dialects.mat');
 dialects=dialects.A_pastespecial;
-Y=pdist(dialects,'euclidean');
-%'euclidean','cityblock','minkowski'
-Z=linkage(Y,'complete');
-%'single','complete','average'
+
+
 labels={'A - Nottinghamshire','B - Nottinghamshire','C - Nottinghamshire',...
     'D - Lincolnshire','F - Lincolnshire','G - Lincolnshire','H - Lincolnshire',...
     'I - Lincolnshire','J - Lincolnshire','K - Lincolnshire','L - Lincolnshire',...
@@ -12,7 +10,24 @@ labels={'A - Nottinghamshire','B - Nottinghamshire','C - Nottinghamshire',...
     'S - Northamptonshire','T - Northamptonshire','U - Northamptonshire',...
     'V - Huntingdonshire','W - Cambridgeshire','X - Buckinghamshire',...
     'Y - Bedfordshire'};
- t = .5*(max(Z(:,3)));
-[H,T]=dendrogram(Z,'colorthreshold',t,'labels',labels, 'Orientation','left');
-set(H,'LineWidth',3)
-grid()
+
+methods={'single','complete','average','complete',...
+    'ward','weighted'};
+distances={'euclidean','seuclidean','cityblock','minkowski','chebychev',...
+    'mahalanobis','cosine','correlation','spearman','hamming','jaccard'};
+
+for i=1:size(distances,2)
+    distance=distances{i};
+    for j=1:size(methods,2)
+        method=methods{j};
+        thistitle=strcat('Dendogram --( distance:',distance,' method: ',method, ')');
+        
+         
+        Y=pdist(dialects,distance);
+        Z=linkage(Y,method);
+        t = .5*(max(Z(:,3))); % dendogram plot threshold
+        figure;[H,T]=dendrogram(Z,'colorthreshold',t,'labels',labels, 'Orientation','left');
+        set(H,'LineWidth',3) 
+        title(thistitle);
+    end
+end
