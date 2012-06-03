@@ -3,7 +3,7 @@ clear all; clc;
 load fisheriris;
 
 [idx,c]=kmeans(meas,3,'distance','cityblock');
-labels=unique(species);
+labels=unique(species)
 
 kmeanscluster={};
 
@@ -41,18 +41,14 @@ for i=1:size(distances,2)
     end
 end
 
-minerror
-distance=distances{index(1)}
-method=methods{index(2)}
+minerror;
+distance=distances{index(1)};
+method=methods{index(2)};
 
 thistitle=strcat('LIRIOS Dendogram -->( method: ',method, ')');
 Y=pdist(meas,distance);
 Z=linkage(Y,method);
 t = .5*(max(Z(:,3))); % dendogram plot threshold
-figure;[H,T]=dendrogram(Z,'colorthreshold',t,'labels',species, 'Orientation','left');
-set(H,'LineWidth',2) 
-title(thistitle);
-xlabel(strcat('distance:', distance));
 
 T=cluster(Z,'maxclust',3);
 clusterversion={};
@@ -61,5 +57,11 @@ for k=1:size(idx,1)
 end
 
 treeconfusion=confusionmat(species,clusterversion)
+
+figure;[H,T]=dendrogram(Z,'colorthreshold',t,'labels',clusterversion, 'Orientation','left');
+set(H,'LineWidth',2) 
+title(thistitle);
+xlabel(strcat('distance:', distance));
+
 
 
