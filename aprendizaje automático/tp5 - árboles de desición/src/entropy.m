@@ -5,6 +5,7 @@ function e=entropy(s)
     e=-p1*mylog2(p1)-p2*mylog2(p2);
 end
 
+
 function l=mylog2(n)
     if(n==0)
        l=0;

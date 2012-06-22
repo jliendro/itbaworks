@@ -5,3 +5,4 @@ function g=ganancia(e,i,p)
     end
 end
 
+
