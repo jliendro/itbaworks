@@ -1,10 +1,3 @@
-data=[  '+','T','T';
-        '+','T','T';
-        '-','T','F';
-        '+','F','F';
-        '-','F','T';
-        '-','F','T' ];
-    
-% a - cálculo de la entropia
-entropia= -3/6*log2(3/6)-3/6*log2(3/6)
-% b - ganancia de a1 la columna 2
+e=entropy([3,3])
+i=[entropy([2,2]),entropy([1,1])]
+g=ganancia(e,i,[4/6,2/6])
