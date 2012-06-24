@@ -1,7 +1,12 @@
 function e=entropy(s)
     cs=sum(s);
-    p1=(s(1)/cs);
-    p2=(s(2)/cs);
+    if(cs==0)
+        p1=0;
+        p2=0;
+    else
+        p1=(s(1)/cs);
+        p2=(s(2)/cs);
+    end
     e=-p1*mylog2(p1)-p2*mylog2(p2);
 end
 
