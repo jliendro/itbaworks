@@ -2,18 +2,20 @@ clc;clear;
 load fisheriris;
 % species meas
 
+[sample,training,group,checkgroup]=divide(meas,species,100);
+
 % punto a
-[k correct]=e1helper(species,meas(:,1:2),meas(:,1:2),species);
+[k correct]=e1helper(group,sample(:,1:2),training(:,1:2),checkgroup);
 plot(k,correct,'r')
 hold on;
 
 %punto b
-[k correct]=e1helper(species,meas(:,3:4),meas(:,3:4),species);
+[k correct]=e1helper(group,sample(:,3:4),training(:,3:4),checkgroup);
 plot(k,correct,'b')
 hold on;
 
 %punto c
-[k correct]=e1helper(species,meas,meas,species);
+[k correct]=e1helper(group,sample,training,checkgroup);
 plot(k,correct,'g');
 hold on;
 

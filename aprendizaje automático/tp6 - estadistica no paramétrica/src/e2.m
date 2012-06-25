@@ -25,27 +25,28 @@ plot(x,y,'ro');
 hold on;
 lengthdata=size(y,1);
 
-colors={'g','m','c','k','r'};
+colors={'m','g','c','r','k'};
 colorsize=size(colors,2)
 
-start=1;
-step=10;
-stop=41;
+range=[1,5,10,30];
 
-for i=start:step:stop
+j=1;
+for i=range
     spanvalue=i/lengthdata;
     span=ceil(spanvalue*length(y));
     z=smooth(x,y,span,'lowess');
-    c=mod(round(i/step),colorsize)+1
+    c=mod(j,colorsize)+1
     plot(x,z,colors{c});
     hold on;
+    j=j+1;
 end
 
 l{1}='datos';
-
-for i=start:step:stop    
-    j=round(i/step)+2
+j=2;
+for i=range
+    %j=round(i/step)+2
     l{j}=strcat(num2str(i),' vecinos');
+    j=j+1;
 end
 
 legend(l);
